@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-lock.yaml
+yarn.lock
+
+# Next.js
+web/.next/
+web/out/
+
+# Build & caches
+dist/
+.cache/
+*.log
+
+# Env & secrets
+*.env
+*.env.*
+!.env.example
+
+# Uploads & data
+server/uploads/
+postgres-data/
+docker-data/
+
+# OS/editor
+.DS_Store
+*.swp
+.vscode/

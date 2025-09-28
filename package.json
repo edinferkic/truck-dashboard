@@ -1,0 +1,32 @@
+{
+  "name": "truck-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Trucking Load & Expense Dashboard (monorepo: server + web)",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix web install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:web": "npm --prefix web run dev",
+    "start:server": "npm --prefix server start",
+    "start:web": "npm --prefix web start",
+    "check:docker": "docker compose config",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "dev:all": "npm run db:up && concurrently -k -n API,WEB -c cyan,magenta \"npm run dev:server\" \"npm run dev:web\"",
+    "dev": "npm run dev:all",
+    "predev": "npx kill-port 3000 4000 || true"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "pino": "^9.10.0",
+    "pino-pretty": "^13.1.1"
+  }
+}

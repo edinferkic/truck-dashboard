@@ -1,0 +1,33 @@
+# secrets
+.env
+.env.*
+
+# heavy runtime/generated
+node_modules/
+uploads/
+coverage/
+dist/
+build/
+tmp/
+
+# Next.js
+web/.next/
+web/out/
+
+# misc
+*.log
+.DS_Store
+*.zip
+*.tar
+*.tgz
+*.sqlite
+
+# archives
+*.zip
+*.tar
+*.tgz
+
+# archives
+*.zip
+*.tar
+*.tgz

@@ -1,0 +1,40 @@
+{
+  "name": "truck-dashboard-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Express API for Trucking Load & Expense Dashboard",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "migrate": "node src/migrate.js",
+    "test:migrate": "NODE_ENV=test DATABASE_URL=postgresql://truck:truckpass@localhost:5432/truckdb_test node src/migrate.js",
+    "test": "bash -lc 'shopt -s nullglob; for f in test/*.test.js; do echo Running \"$f\"; NODE_ENV=test DATABASE_URL=postgresql://truck:truckpass@localhost:5432/truckdb_test node --test --test-reporter=spec \"$f\" || exit 1; done'",
+    "test:cov": "c8 --reporter=text --reporter=lcov bash -lc 'shopt -s nullglob; for f in test/*.test.js; do echo Running \"$f\"; NODE_ENV=test DATABASE_URL=postgresql://truck:truckpass@localhost:5432/truckdb_test node --test --test-reporter=spec \"$f\" || exit 1; done'",
+    "test:watch": "NODE_ENV=test DATABASE_URL=postgresql://truck:truckpass@localhost:5432/truckdb_test node --test --watch",
+    "coverage:check": "c8 check-coverage --lines 92 --statements 92 --functions 100 --branches 60"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "execa": "^9.6.0",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "file-type": "^21.0.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.11.5",
+    "pino": "^9.0.0",
+    "tesseract.js": "^6.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "c8": "^10.1.3"
+  }
+}

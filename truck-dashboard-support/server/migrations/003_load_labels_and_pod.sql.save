@@ -1,0 +1,14 @@
+-- 003_load_labels_and_pod.sql
+-- Add name + state columns to loads
+ALTER TABLE loads
+  ADD COLUMN IF NOT EXISTS driver_first_name TEXT,
+  ADD COLUMN IF NOT EXISTS driver_last_name  TEXT,
+  ADD COLUMN IF NOT EXISTS pickup_state      TEXT,
+  ADD COLUMN IF NOT EXISTS dropoff_state     TEXT;
+
+-- Expand document types to include POD (signed BOL)
+ALTER TABLE documents DROP CONSTRAINT IF EXISTS documents_doc_type_check;
+ALTER TABLE documents
+  ADD CONSTRAINT documents_doc_type_check
+  CHECK (doc_type IN ('rate','bol','pod','other'));
+
